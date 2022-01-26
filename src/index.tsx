@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { rootController } from './commands/RootController';
+import { EventDispatcher } from './context/EventDispatcher';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <EventDispatcher controller={rootController}>
+      <App />
+    </EventDispatcher>
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -1,8 +1,16 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useEventDispatcher } from './context/EventDispatcher';
+import { MyEvent } from './events/MyEvent';
 
 function App() {
+  const { dispatchEvent } = useEventDispatcher();
+
+  const handleClick = () => {
+    const e = new MyEvent(MyEvent.MY_CUSTOM_EVENT, { clicked: true });
+    dispatchEvent(e)
+  }
   return (
     <div className="App">
       <header className="App-header">
@@ -18,6 +26,7 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={handleClick}>CLICK ME</button>
       </header>
     </div>
   );
